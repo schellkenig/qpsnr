@@ -350,10 +350,16 @@ int main(int argc, char *argv[]) {
         // start the threads
         producers_utils::start(ref_vpth, v_th);
         // print header
-        std::cout << "Sample,";
-        for(V_VPDATA::const_iterator it = v_data.begin(); it != v_data.end(); ++it)
-            std::cout << (*it)->name << ',';
-        std::cout << std::endl;
+
+        if(settings::LOG != 0x00)
+        {
+            std::cout << "Sample,";
+            for(V_VPDATA::const_iterator it = v_data.begin(); it != v_data.end(); ++it)
+                std::cout << (*it)->name;
+
+            std::cout << std::endl;
+        }
+
         while(!glb_exit) {
             // wait for the consumer to be signalled 1 + n times
             const static int CONS_SIG_NUM = 1 + v_th.size();

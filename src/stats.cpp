@@ -321,9 +321,9 @@ namespace stats {
         std::string    _colorspace;
     protected:
         void print(const int& ref_frame, const std::vector<double>& v_res) {
-            _ostr << ref_frame << ',';
+            _ostr << ref_frame;
             for(int i = 0; i < _n_streams; ++i)
-                _ostr << v_res[i] << ',';
+                _ostr << ',' << v_res[i];
             _ostr << std::endl;
         }
 
@@ -419,9 +419,9 @@ namespace stats {
         virtual ~avg_psnr() {
             // on exit check if we have some data
             if (_accum_f > 0) {
-                _ostr << _last_frame << ',';
+                _ostr << _last_frame;
                 for(int i = 0; i < _n_streams; ++i) {
-                    _ostr << _accum_v[i]/_accum_f << ',';
+                    _ostr << ',' << _accum_v[i]/_accum_f;
                 }
                 _ostr << std::endl;
             }
@@ -433,9 +433,9 @@ namespace stats {
         int    _blocksize;
 
         void print(const int& ref_frame, const std::vector<double>& v_res) {
-            _ostr << ref_frame << ',';
+            _ostr << ref_frame;
             for(int i = 0; i < _n_streams; ++i)
-                _ostr << v_res[i] << ',';
+                _ostr << ',' << v_res[i];
             _ostr << std::endl;
         }
     public:
@@ -519,9 +519,9 @@ namespace stats {
         virtual ~avg_ssim() {
             // on exit check if we have some data
             if (_accum_f > 0) {
-                _ostr << _last_frame << ',';
+                _ostr << _last_frame;
                 for(int i = 0; i < _n_streams; ++i) {
-                    _ostr << _accum_v[i]/_accum_f << ',';
+                    _ostr << ',' << _accum_v[i]/_accum_f;
                 }
                 _ostr << std::endl;
             }
