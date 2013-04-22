@@ -28,6 +28,9 @@ qav::qvideo::qvideo(const char* file, int _out_width, int _out_height) : frnum(0
     if (pslash) fname = pslash+1;
     else fname = file;
 
+    if(settings::LOG == 0x00)
+        av_log_set_level(0);
+
     pFormatCtx = NULL;
 
     if (avformat_open_input(&pFormatCtx, file, NULL, NULL)!=0)
