@@ -38,6 +38,9 @@ clean :
 	rm -rf $(OBJDIR)/*.o
 	rm -rf $(EXEC)
 
+install:
+	install -m 755 qpsnr /usr/local/bin
+
 bzip :
 	tar -cvf $(EXEC).tar $(SRCDIR)/* Makefile
 	bzip2 $(EXEC).tar
